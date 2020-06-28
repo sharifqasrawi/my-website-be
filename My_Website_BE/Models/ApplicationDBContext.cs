@@ -14,5 +14,11 @@ namespace My_Website_BE.Models
         {
 
         }
+
+        public DbSet<Directory> Directories { get; set; }
+        public DbSet<UploadedFile> UploadedFiles { get; set; }
+        public DbSet<Message> Messages { get; set; }
+        public DbSet<EmailMessage> EmailMessages { get; set; }
+        public DbSet<Visit> Visits { get; set; }
     }
 }

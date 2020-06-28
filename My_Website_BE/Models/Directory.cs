@@ -1,0 +1,17 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace My_Website_BE.Models
+{
+    public class Directory
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Path { get; set; }
+        public DateTime CreatedAt { get; set; }
+
+        public IList<UploadedFile> UploadedFiles { get; set; }
+    }
+}

@@ -23,6 +23,7 @@ using Microsoft.IdentityModel.Tokens;
 using My_Website_BE.Helpers;
 using My_Website_BE.Hubs;
 using My_Website_BE.Models;
+using My_Website_BE.Repositories;
 
 namespace My_Website_BE
 {
@@ -95,6 +96,15 @@ namespace My_Website_BE
             });
 
             services.AddHttpContextAccessor();
+
+            services.AddScoped<IDirectoryRepository, SqlDirectoryRepository>();
+            services.AddScoped<IUploadedFileRepository, SqlUploadedFileRepository>();
+            services.AddScoped<IMessageRepository, SqlMessageRepository>();
+            services.AddScoped<IEmailMessageRepository, SqlEmailMessageRepository>();
+            services.AddScoped<IVisitRepository, SqlVisitRepository>();
+
+            services.AddSingleton<ITranslator, Translator>();
+
             services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
 
             services.AddControllers().AddNewtonsoftJson(options =>
