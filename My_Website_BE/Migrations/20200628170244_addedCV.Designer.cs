@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using My_Website_BE.Models;
 
 namespace My_Website_BE.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    partial class ApplicationDBContextModelSnapshot : ModelSnapshot
+    [Migration("20200628170244_addedCV")]
+    partial class addedCV
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -258,16 +260,10 @@ namespace My_Website_BE.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("City_EN")
+                    b.Property<string>("City")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("City_FR")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Country_EN")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Country_FR")
+                    b.Property<string>("Country")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Emails")
@@ -318,65 +314,6 @@ namespace My_Website_BE.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Directories");
-                });
-
-            modelBuilder.Entity("My_Website_BE.Models.Document", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int?>("CourseId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Description_EN")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Description_FR")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("EducationId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("ExperienceId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("FileId")
-                        .HasColumnType("int");
-
-                    b.Property<bool?>("IsDisplayed")
-                        .HasColumnType("bit");
-
-                    b.Property<int?>("LanguageId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime?>("LastUpdatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Name_EN")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name_FR")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Path")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Type")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CourseId");
-
-                    b.HasIndex("EducationId");
-
-                    b.HasIndex("ExperienceId");
-
-                    b.HasIndex("LanguageId");
-
-                    b.ToTable("Documents");
                 });
 
             modelBuilder.Entity("My_Website_BE.Models.Education", b =>
@@ -439,6 +376,38 @@ namespace My_Website_BE.Migrations
                     b.ToTable("Educations");
                 });
 
+            modelBuilder.Entity("My_Website_BE.Models.EducationDocument", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Description_EN")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Description_FR")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("EducationId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name_EN")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name_FR")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Path")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EducationId");
+
+                    b.ToTable("EducationDocuments");
+                });
+
             modelBuilder.Entity("My_Website_BE.Models.EmailMessage", b =>
                 {
                     b.Property<int>("Id")
@@ -494,9 +463,6 @@ namespace My_Website_BE.Migrations
                     b.Property<DateTime?>("EndDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<bool?>("IsCurrentlyWorking")
-                        .HasColumnType("bit");
-
                     b.Property<string>("Responisbilites_EN")
                         .HasColumnType("nvarchar(max)");
 
@@ -515,6 +481,38 @@ namespace My_Website_BE.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Experiences");
+                });
+
+            modelBuilder.Entity("My_Website_BE.Models.ExperienceDocument", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Description_EN")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Description_FR")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("ExperienceId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name_EN")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name_FR")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Path")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ExperienceId");
+
+                    b.ToTable("ExperienceDocuments");
                 });
 
             modelBuilder.Entity("My_Website_BE.Models.Language", b =>
@@ -542,6 +540,38 @@ namespace My_Website_BE.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Languages");
+                });
+
+            modelBuilder.Entity("My_Website_BE.Models.LanguageDocument", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Description_EN")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Description_FR")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("LanguageId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name_EN")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name_FR")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Path")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("LanguageId");
+
+                    b.ToTable("GetLanguageDocuments");
                 });
 
             modelBuilder.Entity("My_Website_BE.Models.Message", b =>
@@ -597,9 +627,6 @@ namespace My_Website_BE.Migrations
 
                     b.Property<DateTime?>("DateOfBirth")
                         .HasColumnType("datetime2");
-
-                    b.Property<string>("DriversLicense")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ImagePath")
                         .HasColumnType("nvarchar(max)");
@@ -687,9 +714,6 @@ namespace My_Website_BE.Migrations
                     b.Property<string>("CourseUrl")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime?>("DateTime")
-                        .HasColumnType("datetime2");
-
                     b.Property<string>("Duration")
                         .HasColumnType("nvarchar(max)");
 
@@ -705,6 +729,38 @@ namespace My_Website_BE.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("TrainingCourses");
+                });
+
+            modelBuilder.Entity("My_Website_BE.Models.TrainingCourseDocument", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("CourseId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Description_EN")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Description_FR")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name_EN")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name_FR")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Path")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CourseId");
+
+                    b.ToTable("TrainingCourseDocuments");
                 });
 
             modelBuilder.Entity("My_Website_BE.Models.UploadedFile", b =>
@@ -847,20 +903,22 @@ namespace My_Website_BE.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("My_Website_BE.Models.Document", b =>
+            modelBuilder.Entity("My_Website_BE.Models.EducationDocument", b =>
                 {
-                    b.HasOne("My_Website_BE.Models.TrainingCourse", "Course")
-                        .WithMany("Documents")
-                        .HasForeignKey("CourseId");
-
                     b.HasOne("My_Website_BE.Models.Education", "Education")
                         .WithMany("Documents")
                         .HasForeignKey("EducationId");
+                });
 
+            modelBuilder.Entity("My_Website_BE.Models.ExperienceDocument", b =>
+                {
                     b.HasOne("My_Website_BE.Models.Experience", "Experience")
                         .WithMany("Documents")
                         .HasForeignKey("ExperienceId");
+                });
 
+            modelBuilder.Entity("My_Website_BE.Models.LanguageDocument", b =>
+                {
                     b.HasOne("My_Website_BE.Models.Language", "Language")
                         .WithMany("Documents")
                         .HasForeignKey("LanguageId");
@@ -878,6 +936,13 @@ namespace My_Website_BE.Migrations
                     b.HasOne("My_Website_BE.Models.SkillCategory", "Category")
                         .WithMany("Skills")
                         .HasForeignKey("CategoryId");
+                });
+
+            modelBuilder.Entity("My_Website_BE.Models.TrainingCourseDocument", b =>
+                {
+                    b.HasOne("My_Website_BE.Models.TrainingCourse", "Course")
+                        .WithMany("Documents")
+                        .HasForeignKey("CourseId");
                 });
 
             modelBuilder.Entity("My_Website_BE.Models.UploadedFile", b =>

@@ -7,6 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20200628165951_addedCV.cs" />
+    <Compile Remove="Migrations\20200628165951_addedCV.Designer.cs" />
+    <Compile Remove="Migrations\20200701171927_addedCV7.cs" />
+    <Compile Remove="Migrations\20200701171927_addedCV7.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="wwwroot\appData\uploads\" />
   </ItemGroup>
 

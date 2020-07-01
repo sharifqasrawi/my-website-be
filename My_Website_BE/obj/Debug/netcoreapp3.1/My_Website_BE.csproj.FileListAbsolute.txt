@@ -2,7 +2,6 @@ D:\dev\Angular+DotNetCORE\My Website\My_Website_BE\My_Website_BE\bin\Debug\netco
 D:\dev\Angular+DotNetCORE\My Website\My_Website_BE\My_Website_BE\bin\Debug\netcoreapp3.1\appsettings.json
 D:\dev\Angular+DotNetCORE\My Website\My_Website_BE\My_Website_BE\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
 D:\dev\Angular+DotNetCORE\My Website\My_Website_BE\My_Website_BE\bin\Debug\netcoreapp3.1\My_Website_BE.exe
-D:\dev\Angular+DotNetCORE\My Website\My_Website_BE\My_Website_BE\obj\Debug\netcoreapp3.1\My_Website_BE.csprojAssemblyReference.cache
 D:\dev\Angular+DotNetCORE\My Website\My_Website_BE\My_Website_BE\obj\Debug\netcoreapp3.1\staticwebassets\My_Website_BE.StaticWebAssets.Manifest.cache
 D:\dev\Angular+DotNetCORE\My Website\My_Website_BE\My_Website_BE\obj\Debug\netcoreapp3.1\staticwebassets\My_Website_BE.StaticWebAssets.xml
 D:\dev\Angular+DotNetCORE\My Website\My_Website_BE\My_Website_BE\obj\Debug\netcoreapp3.1\My_Website_BE.AssemblyInfoInputs.cache
@@ -149,3 +148,4 @@ D:\dev\Angular+DotNetCORE\My Website\My_Website_BE\My_Website_BE\obj\Debug\netco
 D:\dev\Angular+DotNetCORE\My Website\My_Website_BE\My_Website_BE\obj\Debug\netcoreapp3.1\My_Website_BE.pdb
 D:\dev\Angular+DotNetCORE\My Website\My_Website_BE\My_Website_BE\obj\Debug\netcoreapp3.1\My_Website_BE.MvcApplicationPartsAssemblyInfo.cs
 D:\dev\Angular+DotNetCORE\My Website\My_Website_BE\My_Website_BE\obj\Debug\netcoreapp3.1\My_Website_BE.MvcApplicationPartsAssemblyInfo.cache
+D:\dev\Angular+DotNetCORE\My Website\My_Website_BE\My_Website_BE\obj\Debug\netcoreapp3.1\My_Website_BE.csprojAssemblyReference.cache

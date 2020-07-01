@@ -97,6 +97,16 @@ namespace My_Website_BE
 
             services.AddHttpContextAccessor();
 
+            services.AddScoped<IPersonalInfoRepository, SqlPersonalInfoRepository>();
+            services.AddScoped<IContactInfoRepository, SqlContactInfoRepository>();
+            services.AddScoped<ICVFileRepository, SqlCVFileRepository>();
+            services.AddScoped<IEducationRepository, SqlEducationRepository>();
+            services.AddScoped<IExperienceRepository, SqlExperienceRepository>();
+            services.AddScoped<ILanguageRepository, SqlLanguageRepository>();
+            services.AddScoped<ITrainingCourseRepository, SqlTrainingCourseRepository>();
+            services.AddScoped<IDocumentRepository, SqlDocumentRepository>();
+            services.AddScoped<ISkillCategoryRepository, SqlSkillCategoryRepository>();
+            services.AddScoped<ISkillRepository, SqlSkillRepository>();
             services.AddScoped<IDirectoryRepository, SqlDirectoryRepository>();
             services.AddScoped<IUploadedFileRepository, SqlUploadedFileRepository>();
             services.AddScoped<IMessageRepository, SqlMessageRepository>();
