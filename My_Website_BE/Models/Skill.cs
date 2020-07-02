@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -19,6 +20,9 @@ namespace My_Website_BE.Models
         public string Name_EN { get; set; }
         public string Name_FR { get; set; }
         public int Level { get; set; }
+
+        [JsonIgnore]
         public SkillCategory Category { get; set; }
+        public int CategoryId { get; set; }
     }
 }

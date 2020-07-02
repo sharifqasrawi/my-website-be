@@ -1,4 +1,5 @@
-﻿using My_Website_BE.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using My_Website_BE.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -41,6 +42,7 @@ namespace My_Website_BE.Repositories
         public IList<SkillCategory> GetSkillCategories()
         {
             var skillCategories = dBContext.SkillCategories
+                                    .Include(x =>x.Skills)
                                       .OrderBy(x => x.Name_EN)
                                       .ToList();
 
@@ -50,7 +52,7 @@ namespace My_Website_BE.Repositories
         public SkillCategory Update(SkillCategory skillCategoryChanges)
         {
             var skillCategory = dBContext.SkillCategories.Attach(skillCategoryChanges);
-            skillCategory.State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+            skillCategory.State = EntityState.Modified;
             dBContext.SaveChanges();
             return skillCategoryChanges;
         }
