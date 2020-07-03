@@ -30,5 +30,28 @@ namespace My_Website_BE.Models
         public DbSet<Message> Messages { get; set; }
         public DbSet<EmailMessage> EmailMessages { get; set; }
         public DbSet<Visit> Visits { get; set; }
+
+        public DbSet<Project> Projects { get; set; }
+        public DbSet<Tag> Tags { get; set; }
+
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<ProjectTag>()
+           .HasKey(t => new { t.ProjectId, t.TagId });
+
+            modelBuilder.Entity<ProjectTag>()
+                .HasOne(pt => pt.Project)
+                .WithMany(p => p.ProjectTags)
+                .HasForeignKey(pt => pt.ProjectId);
+
+            modelBuilder.Entity<ProjectTag>()
+                .HasOne(pt => pt.Tag)
+                .WithMany(t => t.ProjectTags)
+                .HasForeignKey(pt => pt.TagId);
+
+
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }

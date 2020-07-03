@@ -52,6 +52,7 @@ namespace My_Website_BE.Controllers
         [HttpGet("message")]
         public IActionResult GetMessage([FromQuery] long id)
         {
+            
             var lang = Request.Headers["language"].ToString();
             var errorMessages = new List<string>();
             try

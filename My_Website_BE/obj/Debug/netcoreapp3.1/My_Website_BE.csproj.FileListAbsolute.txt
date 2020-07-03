@@ -148,4 +148,3 @@ D:\dev\Angular+DotNetCORE\My Website\My_Website_BE\My_Website_BE\obj\Debug\netco
 D:\dev\Angular+DotNetCORE\My Website\My_Website_BE\My_Website_BE\obj\Debug\netcoreapp3.1\My_Website_BE.pdb
 D:\dev\Angular+DotNetCORE\My Website\My_Website_BE\My_Website_BE\obj\Debug\netcoreapp3.1\My_Website_BE.MvcApplicationPartsAssemblyInfo.cs
 D:\dev\Angular+DotNetCORE\My Website\My_Website_BE\My_Website_BE\obj\Debug\netcoreapp3.1\My_Website_BE.MvcApplicationPartsAssemblyInfo.cache
-D:\dev\Angular+DotNetCORE\My Website\My_Website_BE\My_Website_BE\obj\Debug\netcoreapp3.1\My_Website_BE.csprojAssemblyReference.cache

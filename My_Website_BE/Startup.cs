@@ -111,7 +111,9 @@ namespace My_Website_BE
             services.AddScoped<IUploadedFileRepository, SqlUploadedFileRepository>();
             services.AddScoped<IMessageRepository, SqlMessageRepository>();
             services.AddScoped<IEmailMessageRepository, SqlEmailMessageRepository>();
+            services.AddScoped<IProjectRepository, SqlProjectRepository>();
             services.AddScoped<IVisitRepository, SqlVisitRepository>();
+            services.AddScoped<ITagRepository, SqlTagRepository>();
 
             services.AddSingleton<ITranslator, Translator>();
 
