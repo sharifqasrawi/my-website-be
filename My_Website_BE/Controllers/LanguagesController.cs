@@ -40,6 +40,36 @@ namespace My_Website_BE.Controllers
 
             try
             {
+                var languages = _languageRepository.GetLanguages()
+                                                    .Select(l => new
+                                                    {
+                                                        l.Id,
+                                                        l.Name_EN,
+                                                        l.Name_FR,
+                                                        l.LevelRead,
+                                                        l.LevelSpeak,
+                                                        l.LevelWrite,
+                                                        documents = l.Documents.Where(d => d.IsDisplayed.Value)
+                                                    }).ToList();
+
+                return Ok(new { languages });
+            }
+            catch
+            {
+                errorMessages.Add(_translator.GetTranslation("ERROR", lang));
+                return BadRequest(new { errors = errorMessages });
+            }
+        }
+
+        [Authorize(Roles = "Admin")]
+        [HttpGet("admin")]
+        public IActionResult GetLanguagesAdmin()
+        {
+            var lang = Request.Headers["language"].ToString();
+            var errorMessages = new List<string>();
+
+            try
+            {
                 var languages = _languageRepository.GetLanguages();
 
                 return Ok(new { languages });

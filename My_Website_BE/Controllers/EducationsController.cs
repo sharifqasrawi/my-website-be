@@ -40,6 +40,48 @@ namespace My_Website_BE.Controllers
 
             try
             {
+                var educations = _educationRepository.GetEducations()
+                                                     .Select(e => new
+                                                     {
+                                                         e.Id,
+                                                         e.Title_EN,
+                                                         e.Title_FR,
+                                                         e.Specialization_EN,
+                                                         e.Specialization_FR,
+                                                         e.Mention_EN,
+                                                         e.Mention_FR,
+                                                         e.Establishment_EN,
+                                                         e.Establishment_FR,
+                                                         e.Country_EN,
+                                                         e.Country_FR,
+                                                         e.City_EN,
+                                                         e.City_FR,
+                                                         e.GraduateDate,
+                                                         e.Note,
+                                                         e.StartDate,
+                                                         e.YearsCount,
+                                                         documents = e.Documents.Where(d => d.IsDisplayed.Value)
+                                                     })
+                                                     .ToList();
+
+                return Ok(new { educations });
+            }
+            catch
+            {
+                errorMessages.Add(_translator.GetTranslation("ERROR", lang));
+                return BadRequest(new { errors = errorMessages });
+            }
+        }
+
+        [Authorize(Roles = "Admin")]
+        [HttpGet("admin")]
+        public IActionResult GetEducationAdmin()
+        {
+            var lang = Request.Headers["language"].ToString();
+            var errorMessages = new List<string>();
+
+            try
+            {
                 var educations = _educationRepository.GetEducations();
 
                 return Ok(new { educations });

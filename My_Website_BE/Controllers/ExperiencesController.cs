@@ -40,6 +40,47 @@ namespace My_Website_BE.Controllers
 
             try
             {
+                var experiences = _experienceRepository.GetExperiences()
+                                                    .Select(e => new
+                                                    {
+                                                        e.Id,
+                                                        e.Title_EN,
+                                                        e.Title_FR,
+                                                        e.Company,
+                                                        e.StartDate,
+                                                        e.EndDate,
+                                                        e.IsCurrentlyWorking,
+                                                        e.City_EN,
+                                                        e.City_FR,
+                                                        e.Country_EN,
+                                                        e.Country_FR,
+                                                        e.Responisbilites_EN,
+                                                        e.Responisbilites_FR,
+                                                        e.Accomplishments_EN,
+                                                        e.Accomplishments_FR,
+                                                        documents = e.Documents.Where(d => d.IsDisplayed.Value)
+                                                    })
+                                                    .ToList();
+
+                return Ok(new { experiences });
+            }
+            catch
+            {
+                errorMessages.Add(_translator.GetTranslation("ERROR", lang));
+                return BadRequest(new { errors = errorMessages });
+            }
+        }
+
+
+        [Authorize(Roles = "Admin")]
+        [HttpGet("admin")]
+        public IActionResult GetExperiencesAdmin()
+        {
+            var lang = Request.Headers["language"].ToString();
+            var errorMessages = new List<string>();
+
+            try
+            {
                 var experiences = _experienceRepository.GetExperiences();
 
                 return Ok(new { experiences });

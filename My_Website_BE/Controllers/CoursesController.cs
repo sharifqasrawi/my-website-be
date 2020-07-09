@@ -31,6 +31,26 @@ namespace My_Website_BE.Controllers
             _translator = translator;
         }
 
+        [Authorize(Roles = "Admin")]
+        [HttpGet("admin")]
+        public IActionResult GetCoursesAdmin()
+        {
+            var lang = Request.Headers["language"].ToString();
+            var errorMessages = new List<string>();
+
+            try
+            {
+                var courses = _trainingCourseRepository.GetTrainingCourses();
+
+                return Ok(new { courses });
+            }
+            catch
+            {
+                errorMessages.Add(_translator.GetTranslation("ERROR", lang));
+                return BadRequest(new { errors = errorMessages });
+            }
+        }
+
         [AllowAnonymous]
         [HttpGet]
         public IActionResult GetCourses()
@@ -40,7 +60,23 @@ namespace My_Website_BE.Controllers
 
             try
             {
-                var courses = _trainingCourseRepository.GetTrainingCourses();
+                var courses = _trainingCourseRepository.GetTrainingCourses()
+                                                       .Select(c => new
+                                                       {
+                                                           c.Id,
+                                                           c.Name,
+                                                           c.Type,
+                                                           c.Establishment,
+                                                           c.Duration,
+                                                           c.DateTime,
+                                                           c.CourseUrl,
+                                                           c.City_EN,
+                                                           c.City_FR,
+                                                           c.Country_EN,
+                                                           c.Country_FR,
+                                                           documents = c.Documents.Where(d => d.IsDisplayed.Value)
+                                                       })
+                                                       .ToList();
 
                 return Ok(new { courses });
             }
